@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<head>
+  <title>Mutasim Kafi made by: kafi</title>
+  <style>
+  button{
+    padding:11px;
+    background-color: coral;
+    color: white;
+  }
+    body {
+      text-align: center;
+      background: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7f59331516629.56544dec01432.png");
+      background-size: cover;
+      background-position: center;
+      color: orange;
+      font-family: helvetica;
+    }
+    p {
+      font-size: 22px;
+      font-family: 'Dancing Script', cursive;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+    input[type="submit"] {
+      background: teal;
+      color: coral;
+    }
+    img { 
+      border-radius: 50%
+    }
+    h2 {
+      font-family: 'Dancing Script', cursive;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.pinimg.com/474x/14/0d/fd/140dfd202c1c432fcecea13c91ec367b.jpg" width=200 height=200>
+  <p>Hi! I'm Mutasim, a student in Jamaica Gateway to the Sciences.</p>
+  <h2> Contact Me: </h2>
+  <input id="Name" placeholder="Your name">
+  <input id="Email" type="email" placeholder="Your email">
+  <button id="submit">Submit</button>
+
+
+
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAKIblEsmDO61s0Hk6r4BvzNaQyCusPQv8",
+    authDomain: "html-project-1-ed15e.firebaseapp.com",
+    projectId: "html-project-1-ed15e",
+    storageBucket: "html-project-1-ed15e.appspot.com",
+    messagingSenderId: "962260287593",
+    appId: "1:962260287593:web:263af4fa6264bef0d222f8"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+  document.querySelector('#submit').addEventListener('click', Submit)
+  function Submit() {
+    const timestamp = buildTimestamp()
+    
+    set(ref(db, timestamp), {
+      Name: Name.value,
+      Email: Email.value,
+    });
+
+    Name.value = ""
+    Email.value = ""
+  }
+
+  function buildTimestamp() {
+    const now = new Date();
+    let timestamp = now.getFullYear().toString() + "/";
+    //const month = now.toLocaleString('default', { month: 'long' });
+
+    let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+    month = month.toString()
+    month = addLeadingZero(month)
+    timestamp += month + "/"; 
+
+    let date = now.getDate().toString()
+    date = addLeadingZero(date)
+    timestamp += date + "/";
+
+    let hours = now.getHours().toString()
+    hours = addLeadingZero(hours)
+    timestamp += hours + ":";
+
+    let minutes = now.getMinutes().toString()
+    minutes = addLeadingZero(minutes)
+    timestamp += minutes + ":";
+
+    let seconds = now.getSeconds().toString()
+    seconds = addLeadingZero(seconds)
+    timestamp += seconds;
+  
+    return timestamp
+  }
+  
+  function addLeadingZero(units) {
+    if (units.length < 2) {
+      units = "0" + units
+    }
+    return units
+  }
+
+
+</script>
+</body>
