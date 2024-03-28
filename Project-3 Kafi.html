@@ -1,0 +1,231 @@
+  <!DOCTYPE html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+input {
+  font-size: 22px;
+}
+body {
+  font-family: 'Architects Daughter', cursive;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #8dbdd8;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Great Vibes', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: #212c58;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #477966;
+  margin: 60px 0 0px 0;
+}
+p {
+  color: rgba(160,150,100,1);
+  background: linear-gradient(bottom, #ffb6c1, #ADD8E6);
+  background: linear-gradient(bottom, #ffb6c1, #ADD8E6);
+  background: -webkit-linear-gradient(bottom, #ffb6c1, #ADD8E6);
+  background: -moz-linear-gradient(bottom, #ffb6c1, #ADD8E6);
+  opacity: 0.8;                  
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://www.motortrend.com/uploads/2022/10/2023-BMW-M2-M-Performance-Parts-20.jpg");
+}
+.second{
+  background-image: url("https://blogdebmw.com/wp-content/uploads/2021/02/atlantis-blue-bmw-f80-m3-with-hre-r101lw-wheels-image-7.jpg");
+}
+.third{
+  background-image: url("https://www.topgear.com/sites/default/files/2022/10/field-adro-g8x-m3-m4-green-front-q-2.jpg");
+}
+.dessert{
+  background-image: url("https://s1.cdn.autoevolution.com/images/news/this-bmw-m5-stingray-rp850-is-not-a-vette-runs-the-1-4-mile-in-97-seconds-198689_1.jpg");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Fuad's Motorsports</h1>
+<h2>The best way to travel across the road to success is in a vehicle that embodies the essence of success </h2>
+<div class="first">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Bmw M2 <span class="price">$63000</span><br />
+  <small>During testing, the M2 hit 60 mph in 3.9 seconds while equipped with the standard six-speed manual transmission will. It crossed a quarter-mile in 12.2 seconds at 118 mph. The eight-speed will likely be a little quicker.</small></p>
+</div>
+<div class="second">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>BMW M3 <span class="price">$74300</span><br />
+  <small>A curved gauge cluster running BMW's latest operating system is now standard. The optional Driver Recorder is now a standalone option and no longer included as part of the Parking Assistance package. Gesture Control is no longer part of the Executive package.</small></p>
+</div>
+
+<div class="third">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>BMW M4<span class="price">$82700</span><br />
+  <small>Aerodynamic. The standard carbon fiber roof sports fins for controlling airflow, while the M mirrors and side gills add flair. Cutting. The stylish standard rear diffuser and trunk spoiler provide perfect downforce, and complement the L-shaped LED taillights. </small></p>
+</div>
+  
+<div class="dessert">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>BMW M5<span class="price">$107900</span><br />
+  <small>Powered by a 4.4-liter BMW M TwinPower Turbo V8 with 600 horsepower and 553 lb-ft of torque, the M5 can rocket from 0 to 60 in a blistering 3.2 seconds.</small></p>
+</div>
+<br><br>
+  <input id="Name" placeholder="Your name">
+  <input id="Email" type="email" placeholder="Your email">
+  <button id="submit">Submit</button>
+  <br><br>
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA7L83s_Zkbm59n5FFy8uCKVXcodtNz5zU",
+    authDomain: "project3-54aa0.firebaseapp.com",
+    projectId: "project3-54aa0",
+    storageBucket: "project3-54aa0.appspot.com",
+    messagingSenderId: "579366025690",
+    appId: "1:579366025690:web:b92b0f3d6bf791eaefe8e3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+  const quantities = document.querySelectorAll(".quantities") 
+  const prices = document.querySelectorAll(".price")
+  const itemsList = ["M2", "M3", "M4","M5"]
+  document.querySelector('#submit').addEventListener('click', Submit)
+  function Submit() {
+    const timestamp = buildTimestamp()
+    let total = 0
+    let cart = { }
+    for  (let i=0; i<quantities.length; i=i+1) {
+      if (quantities[i].value != "0" && quantities[i].value != "") {  
+        let price = prices[i].innerHTML.replace('$', '')
+        total = total + quantities[i].value * price 
+        cart[itemsList[i]] = parseInt(quantities[i].value) 
+      }
+      quantities[i].value = ""
+    }
+    set(ref(db, timestamp), {
+      Name: Name.value,
+        email: Email.value,
+        cart: cart,
+        totalPrice: total,
+        paid: "not yet",
+    });
+
+    Name.value = ""
+    Email.value = ""
+  }
+    function buildTimestamp() {
+    const now = new Date();
+    let timestamp = now.getFullYear().toString() + "/";
+    //const month = now.toLocaleString('default', { month: 'long' });
+
+    let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+    month = month.toString()
+    month = addLeadingZero(month)
+    timestamp += month + "/"; 
+
+    let date = now.getDate().toString()
+    date = addLeadingZero(date)
+    timestamp += date + "/";
+
+    let hours = now.getHours().toString()
+    hours = addLeadingZero(hours)
+    timestamp += hours + ":";
+
+    let minutes = now.getMinutes().toString()
+    minutes = addLeadingZero(minutes)
+    timestamp += minutes + ":";
+
+    let seconds = now.getSeconds().toString()
+    seconds = addLeadingZero(seconds)
+    timestamp += seconds;
+  
+    return timestamp
+  }
+  
+  function addLeadingZero(units) {
+    if (units.length < 2) {
+      units = "0" + units
+    }
+    return units
+  }
+</script>
+</body>
